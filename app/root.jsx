@@ -13,6 +13,8 @@ export const meta = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
+import sharedStyles from '~/styles/shared.css';
+
 export default function App() {
   return (
     <html lang="en">
@@ -28,4 +30,8 @@ export default function App() {
       </body>
     </html>
   );
+}
+
+export function links() {
+  return [{ rel: 'stylesheet', href: sharedStyles }];
 }
