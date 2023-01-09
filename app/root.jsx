@@ -1,5 +1,4 @@
 import sharedStyles from '~/styles/shared.css';
-import MainHeader from './components/navigation/MainHeader';
 
 const {
   Links,
@@ -24,7 +23,6 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <MainHeader />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
