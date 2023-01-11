@@ -1,3 +1,5 @@
+import sharedStyles from '~/styles/shared.css';
+
 const {
   Links,
   LiveReload,
@@ -5,15 +7,13 @@ const {
   Outlet,
   Scripts,
   ScrollRestoration,
-} = require("@remix-run/react");
+} = require('@remix-run/react');
 
 export const meta = () => ({
-  charset: "utf-8",
-  title: "New Remix App",
-  viewport: "width=device-width,initial-scale=1",
+  charset: 'utf-8',
+  title: 'New Remix App',
+  viewport: 'width=device-width,initial-scale=1',
 });
-
-import sharedStyles from '~/styles/shared.css';
 
 export default function App() {
   return (
