@@ -1179,6 +1179,11 @@
     tiny-glob "^0.2.9"
     tslib "^2.4.0"
 
+"@prisma/engines@4.8.1":
+  version "4.8.1"
+  resolved "https://registry.yarnpkg.com/@prisma/engines/-/engines-4.8.1.tgz#8428f7dcd7912c6073024511376595017630dc85"
+  integrity sha512-93tctjNXcIS+i/e552IO6tqw17sX8liivv8WX9lDMCpEEe3ci+nT9F+1oHtAafqruXLepKF80i/D20Mm+ESlOw==
+
 "@remix-run/dev@^1.7.6":
   version "1.7.6"
   resolved "https://registry.yarnpkg.com/@remix-run/dev/-/dev-1.7.6.tgz#75c30c5a0a74807e7479fafe77b614bd77ef8b4c"
@@ -5702,6 +5707,13 @@ pretty-ms@^7.0.1:
   integrity sha512-973driJZvxiGOQ5ONsFhOF/DtzPMOMtgC11kCpUrPGMTgqp2q/1gwzCquocrN33is0VZ5GFHXZYMM9l6h67v2Q==
   dependencies:
     parse-ms "^2.1.0"
+
+prisma@^4.8.1:
+  version "4.8.1"
+  resolved "https://registry.yarnpkg.com/prisma/-/prisma-4.8.1.tgz#ef93cd908809b7d02e9f4bead5eea7733ba50c68"
+  integrity sha512-ZMLnSjwulIeYfaU1O6/LF6PEJzxN5par5weykxMykS9Z6ara/j76JH3Yo2AH3bgJbPN4Z6NeCK9s5fDkzf33cg==
+  dependencies:
+    "@prisma/engines" "4.8.1"
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
