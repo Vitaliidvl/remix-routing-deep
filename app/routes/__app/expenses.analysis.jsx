@@ -4,6 +4,7 @@ import { getExpenses } from '~/data/expenses.server';
 import ExpenseStatistics from '~/components/expenses/ExpenseStatistics';
 import Chart from '~/components/expenses/Chart';
 import Error from '~/components/util/Error';
+import { requireUserSession } from '~/data/auth.server';
 // /expenses/analysis
 
 export default function ExpensesAnalysisPage() {
@@ -16,8 +17,10 @@ export default function ExpensesAnalysisPage() {
   );
 }
 
-export async function loader() {
-  const expenses = await getExpenses();
+export async function loader({ request }) {
+  const userId = await requireUserSession(request);
+
+  const expenses = await getExpenses(userId);
   if (!expenses || expenses.length === 0) {
     throw json(
       { message: 'Could not get expenses for the requested analysis. ' },

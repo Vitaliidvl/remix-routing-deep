@@ -1,7 +1,9 @@
 // /expenses => shared layout
+import { json } from '@remix-run/node';
 import { Link, Outlet, useLoaderData } from '@remix-run/react';
 import { FaPlus, FaDownload } from 'react-icons/fa';
 import ExpensesList from '~/components/expenses/ExpensesList';
+import { requireUserSession } from '~/data/auth.server';
 import { getExpenses } from '~/data/expenses.server';
 
 export default function ExpensesLayout() {
@@ -35,9 +37,15 @@ export default function ExpensesLayout() {
   );
 }
 
-export async function loader() {
-  const expenses = await getExpenses();
-  return expenses;
+export async function loader({ request }) {
+  const userId = await requireUserSession(request);
+  const expenses = await getExpenses(userId);
+  // return expenses;
+  return json(expenses, {
+    headers: {
+      'Cache-Control': 'max-age=3',
+    },
+  });
   // if (!expenses || expenses.length === 0) {
   //   throw json(
   //     { message: 'Could not find any expenses.' },
@@ -49,3 +57,9 @@ export async function loader() {
 // export function CatchBoundary() {
 //   return <p>Error</p>;
 // }
+
+export function headers({ actionHeaders, loaderHeaders, parentHeaders }) {
+  return {
+    'Cache-Control': loaderHeaders.get('Cache-Control'), // 60 minutes
+  };
+}

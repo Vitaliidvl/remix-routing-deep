@@ -9,26 +9,29 @@ const {
   ScrollRestoration,
   Link,
   useCatch,
+  useMatches,
 } = require('@remix-run/react');
 
 export const meta = () => ({
   charset: 'utf-8',
-  title: 'New Remix App',
+  title: 'Remix Expenses',
   viewport: 'width=device-width,initial-scale=1',
 });
 
 function Document({ title, children }) {
+  const matches = useMatches();
+  const disableJS = matches.some((match) => match.handle?.disableJS);
   return (
     <html lang="en">
       <head>
-        <title>{title}</title>
+        {title && <title>{title}</title>}
         <Meta />
         <Links />
       </head>
       <body>
         {children}
         <ScrollRestoration />
-        <Scripts />
+        {!disableJS && <Scripts />}
         <LiveReload />
       </body>
     </html>
